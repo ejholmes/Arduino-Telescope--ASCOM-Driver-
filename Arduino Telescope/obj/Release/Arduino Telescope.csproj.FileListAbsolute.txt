@@ -1,0 +1,10 @@
+C:\Users\ejholmes\Documents\Visual Studio 2008\Projects\Arduino Telescope\Arduino Telescope\bin\Release\Arduino Telescope.dll
+C:\Users\ejholmes\Documents\Visual Studio 2008\Projects\Arduino Telescope\Arduino Telescope\bin\Release\Arduino Telescope.pdb
+C:\Users\ejholmes\Documents\Visual Studio 2008\Projects\Arduino Telescope\Arduino Telescope\bin\Release\Arduino Telescope.tlb
+C:\Users\ejholmes\Documents\Visual Studio 2008\Projects\Arduino Telescope\Arduino Telescope\obj\Release\ResolveAssemblyReference.cache
+C:\Users\ejholmes\Documents\Visual Studio 2008\Projects\Arduino Telescope\Arduino Telescope\obj\Release\Arduino Telescope.csproj.ResolveComReference.cache
+C:\Users\ejholmes\Documents\Visual Studio 2008\Projects\Arduino Telescope\Arduino Telescope\obj\Release\ASCOM.Arduino.Properties.Resources.resources
+C:\Users\ejholmes\Documents\Visual Studio 2008\Projects\Arduino Telescope\Arduino Telescope\obj\Release\ASCOM.Arduino.SetupDialogForm.resources
+C:\Users\ejholmes\Documents\Visual Studio 2008\Projects\Arduino Telescope\Arduino Telescope\obj\Release\Arduino Telescope.csproj.GenerateResource.Cache
+C:\Users\ejholmes\Documents\Visual Studio 2008\Projects\Arduino Telescope\Arduino Telescope\obj\Release\Arduino Telescope.dll
+C:\Users\ejholmes\Documents\Visual Studio 2008\Projects\Arduino Telescope\Arduino Telescope\obj\Release\Arduino Telescope.pdb

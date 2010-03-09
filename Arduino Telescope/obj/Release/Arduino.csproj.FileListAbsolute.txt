@@ -1,0 +1,10 @@
+C:\Users\ejholmes\AppData\Local\Temporary Projects\Arduino\bin\Release\ASCOM.Arduino.Telescope.dll
+C:\Users\ejholmes\AppData\Local\Temporary Projects\Arduino\bin\Release\ASCOM.Arduino.Telescope.pdb
+C:\Users\ejholmes\AppData\Local\Temporary Projects\Arduino\bin\Release\ASCOM.Arduino.Telescope.tlb
+C:\Users\ejholmes\AppData\Local\Temporary Projects\Arduino\obj\Release\ResolveAssemblyReference.cache
+C:\Users\ejholmes\AppData\Local\Temporary Projects\Arduino\obj\Release\Arduino.csproj.ResolveComReference.cache
+C:\Users\ejholmes\AppData\Local\Temporary Projects\Arduino\obj\Release\ASCOM.Arduino.Properties.Resources.resources
+C:\Users\ejholmes\AppData\Local\Temporary Projects\Arduino\obj\Release\ASCOM.Arduino.SetupDialogForm.resources
+C:\Users\ejholmes\AppData\Local\Temporary Projects\Arduino\obj\Release\Arduino.csproj.GenerateResource.Cache
+C:\Users\ejholmes\AppData\Local\Temporary Projects\Arduino\obj\Release\ASCOM.Arduino.Telescope.dll
+C:\Users\ejholmes\AppData\Local\Temporary Projects\Arduino\obj\Release\ASCOM.Arduino.Telescope.pdb
