@@ -100,9 +100,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Test.js" />
-  </ItemGroup>
-  <ItemGroup>
     <COMReference Include="ASCOM.Helper">
       <Guid>{12DC26BD-E8F7-4328-8A8B-B16C6D87A077}</Guid>
       <VersionMajor>1</VersionMajor>
@@ -130,7 +127,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ASCOM.png" />
-    <Content Include="ReadMe.htm" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">

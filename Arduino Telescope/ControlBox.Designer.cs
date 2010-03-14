@@ -40,6 +40,7 @@
             this.buttonNorth.Name = "buttonNorth";
             this.buttonNorth.Size = new System.Drawing.Size(40, 40);
             this.buttonNorth.TabIndex = 0;
+            this.buttonNorth.TabStop = false;
             this.buttonNorth.Text = "N";
             this.buttonNorth.UseVisualStyleBackColor = true;
             this.buttonNorth.MouseDown += new System.Windows.Forms.MouseEventHandler(this.buttonNorth_Down);
@@ -51,6 +52,7 @@
             this.buttonSouth.Name = "buttonSouth";
             this.buttonSouth.Size = new System.Drawing.Size(40, 40);
             this.buttonSouth.TabIndex = 0;
+            this.buttonSouth.TabStop = false;
             this.buttonSouth.Text = "S";
             this.buttonSouth.UseVisualStyleBackColor = true;
             this.buttonSouth.MouseDown += new System.Windows.Forms.MouseEventHandler(this.buttonSouth_Down);
@@ -62,6 +64,7 @@
             this.buttonEast.Name = "buttonEast";
             this.buttonEast.Size = new System.Drawing.Size(40, 40);
             this.buttonEast.TabIndex = 0;
+            this.buttonEast.TabStop = false;
             this.buttonEast.Text = "E";
             this.buttonEast.UseVisualStyleBackColor = true;
             this.buttonEast.MouseDown += new System.Windows.Forms.MouseEventHandler(this.buttonEast_Down);
@@ -73,6 +76,7 @@
             this.buttonWest.Name = "buttonWest";
             this.buttonWest.Size = new System.Drawing.Size(40, 40);
             this.buttonWest.TabIndex = 0;
+            this.buttonWest.TabStop = false;
             this.buttonWest.Text = "W";
             this.buttonWest.UseVisualStyleBackColor = true;
             this.buttonWest.MouseDown += new System.Windows.Forms.MouseEventHandler(this.buttonWest_Down);
@@ -80,6 +84,7 @@
             // 
             // ControlBox
             // 
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(ControlBox_FormClosing);
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(144, 228);
@@ -93,6 +98,11 @@
             this.TopMost = true;
             this.ResumeLayout(false);
 
+        }
+
+        void ControlBox_FormClosing(object sender, System.Windows.Forms.FormClosingEventArgs e)
+        {
+            e.Cancel = true;
         }
 
         

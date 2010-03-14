@@ -47,9 +47,9 @@ namespace ASCOM.Arduino
         //
         // Driver ID and descriptive string that shows in the Chooser
         //
-        private static string s_csDriverID = "ASCOM.Arduino.Telescope";
+        public static string s_csDriverID = "ASCOM.Arduino.Telescope";
         // TODO Change the descriptive string for your driver then remove this line
-        private static string s_csDriverDescription = "Arduino Telescope";
+        public static string s_csDriverDescription = "Arduino Telescope";
 
         private bool connected = false;
 
@@ -59,9 +59,13 @@ namespace ASCOM.Arduino
 
         private ControlBox ctrl;
 
+        private string comPort;
+
         private ASCOM.Utilities.Serial SerialConnection;
 
         private ASCOM.Helper.Util HC = new ASCOM.Helper.Util();
+
+        private ASCOM.Utilities.Profile profile = new ASCOM.Utilities.Profile();
 
         //
         // Driver private data (rate collections)
@@ -81,8 +85,20 @@ namespace ASCOM.Arduino
             m_TrackingRates = new TrackingRates();
 
 
+            profile.DeviceType = "Telescope";
+
+            try
+            {
+                this.comPort = profile.GetValue(ASCOM.Arduino.Telescope.s_csDriverID, "ComPort");
+            }
+            catch
+            {
+                this.comPort = null;
+            }
+
+
             SerialConnection = new ASCOM.Utilities.Serial();
-            SerialConnection.Port = 4;
+            SerialConnection.PortName = this.comPort;
             SerialConnection.StopBits = SerialStopBits.One;
             SerialConnection.Parity = SerialParity.None;
             SerialConnection.Speed = SerialSpeed.ps9600;
@@ -312,10 +328,24 @@ namespace ASCOM.Arduino
 
         public bool ConnectTelescope()
         {
-            ctrl = new ControlBox(this);
-            ctrl.Show();
             SerialConnection.Connected = true;
-            return true;
+            SerialConnection.ClearBuffers();
+
+            HC.WaitForMilliseconds(5000);
+            SerialConnection.Transmit(": C 127 15 #"); // Tell the telescope to connect
+            string ack = SerialConnection.ReceiveTerminated("\r");
+
+            if (ack == "OK\r")
+            {
+                ctrl = new ControlBox(this);
+                ctrl.Show();
+                return true;
+            }
+            else
+            {
+                System.Windows.Forms.MessageBox.Show(ack);
+                return false;
+            }
         }
 
         public bool DisconnectTelescope()

@@ -11,13 +11,20 @@ namespace ASCOM.Arduino
     [ComVisible(false)]					// Form not registered for COM!
     public partial class SetupDialogForm : Form
     {
+        ASCOM.Utilities.Profile profile = new ASCOM.Utilities.Profile();
+
         public SetupDialogForm()
         {
+            profile.DeviceType = "Telescope";
             InitializeComponent();
+
+            this.comboComPort.Items.AddRange(System.IO.Ports.SerialPort.GetPortNames());
+            this.comboComPort.SelectedItem = profile.GetValue(ASCOM.Arduino.Telescope.s_csDriverID, "ComPort");
         }
 
         private void cmdOK_Click(object sender, EventArgs e)
         {
+            profile.WriteValue(ASCOM.Arduino.Telescope.s_csDriverID, "ComPort", this.comboComPort.SelectedItem.ToString());
             Dispose();
         }
 
