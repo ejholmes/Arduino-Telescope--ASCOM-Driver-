@@ -484,20 +484,17 @@ namespace ASCOM.Arduino
 
         public double RightAscension
         {
-            // TODO Replace this with your implementation
             get { throw new PropertyNotImplementedException("RightAscension", false); }
         }
 
         public double RightAscensionRate
         {
-            // TODO Replace this with your implementation
             get { throw new PropertyNotImplementedException("RightAscensionRate", false); }
             set { throw new PropertyNotImplementedException("RightAscensionRate", true); }
         }
 
         public void SetPark()
         {
-            // TODO Replace this with your implementation
             throw new MethodNotImplementedException("SetPark");
         }
 
@@ -509,78 +506,66 @@ namespace ASCOM.Arduino
 
         public PierSide SideOfPier
         {
-            // TODO Replace this with your implementation
             get { throw new PropertyNotImplementedException("SideOfPier", false); }
             set { throw new PropertyNotImplementedException("SideOfPier", true); }
         }
 
         public double SiderealTime
         {
-            // TODO Replace this with your implementation
             get { throw new PropertyNotImplementedException("SiderealTime", false); }
         }
 
         public double SiteElevation
         {
-            // TODO Replace this with your implementation
             get { throw new PropertyNotImplementedException("SiteElevation", false); }
             set { throw new PropertyNotImplementedException("SiteElevation", true); }
         }
 
         public double SiteLatitude
         {
-            // TODO Replace this with your implementation
             get { throw new PropertyNotImplementedException("SiteLatitude", false); }
             set { throw new PropertyNotImplementedException("SiteLatitude", true); }
         }
 
         public double SiteLongitude
         {
-            // TODO Replace this with your implementation
             get { throw new PropertyNotImplementedException("SiteLongitude", false); }
             set { throw new PropertyNotImplementedException("SiteLongitude", true); }
         }
 
         public short SlewSettleTime
         {
-            // TODO Replace this with your implementation
             get { throw new PropertyNotImplementedException("SlewSettleTime", false); }
             set { throw new PropertyNotImplementedException("SlewSettleTime", true); }
         }
 
         public void SlewToAltAz(double Azimuth, double Altitude)
         {
-            // TODO Replace this with your implementation
             throw new MethodNotImplementedException("SlewToAltAz");
         }
 
         public void SlewToAltAzAsync(double Azimuth, double Altitude)
         {
-            // TODO Replace this with your implementation
             throw new MethodNotImplementedException("SlewToAltAzAsync");
         }
 
         public void SlewToCoordinates(double RightAscension, double Declination)
         {
-            // TODO Replace this with your implementation
             throw new MethodNotImplementedException("SlewToCoordinates");
         }
 
         public void SlewToCoordinatesAsync(double RightAscension, double Declination)
         {
-            // TODO Replace this with your implementation
             throw new MethodNotImplementedException("SlewToCoordinatesAsync");
         }
 
         public void SlewToTarget()
         {
-            // TODO Replace this with your implementation
             throw new MethodNotImplementedException("SlewToTarget");
         }
 
         public void SlewToTargetAsync()
         {
-            // TODO Replace this with your implementation
             throw new MethodNotImplementedException("SlewToTargetAsync");
         }
 
@@ -591,46 +576,39 @@ namespace ASCOM.Arduino
 
         public void SyncToAltAz(double Azimuth, double Altitude)
         {
-            // TODO Replace this with your implementation
             throw new MethodNotImplementedException("SyncToAltAz");
         }
 
         public void SyncToCoordinates(double RightAscension, double Declination)
         {
-            // TODO Replace this with your implementation
             throw new MethodNotImplementedException("SyncToCoordinates");
         }
 
         public void SyncToTarget()
         {
-            // TODO Replace this with your implementation
             throw new MethodNotImplementedException("SyncToTarget");
         }
 
         public double TargetDeclination
         {
-            // TODO Replace this with your implementation
             get { throw new PropertyNotImplementedException("TargetDeclination", false); }
             set { throw new PropertyNotImplementedException("TargetDeclination", true); }
         }
 
         public double TargetRightAscension
         {
-            // TODO Replace this with your implementation
             get { throw new PropertyNotImplementedException("TargetRightAscension", false); }
             set { throw new PropertyNotImplementedException("TargetRightAscension", true); }
         }
 
         public bool Tracking
         {
-            // TODO Replace this with your implementation
             get { throw new PropertyNotImplementedException("Tracking", false); }
             set { throw new PropertyNotImplementedException("Tracking", true); }
         }
 
         public DriveRates TrackingRate
         {
-            // TODO Replace this with your implementation
             get { throw new PropertyNotImplementedException("TrackingRate", false); }
             set { throw new PropertyNotImplementedException("TrackingRate", true); }
         }
@@ -642,14 +620,12 @@ namespace ASCOM.Arduino
 
         public DateTime UTCDate
         {
-            // TODO Replace this with your implementation
             get { throw new PropertyNotImplementedException("UTCDate", false); }
             set { throw new PropertyNotImplementedException("UTCDate", true); }
         }
 
         public void Unpark()
         {
-            // TODO Replace this with your implementation
             throw new MethodNotImplementedException("Unpark");
         }
 
@@ -668,8 +644,8 @@ namespace ASCOM.Arduino
     [ClassInterface(ClassInterfaceType.None)]
     public class Rate : IRate
     {
-        private double m_dMaximum = 0;
-        private double m_dMinimum = 0;
+        private double m_dMaximum = 1;
+        private double m_dMinimum = 1;
 
         //
         // Default constructor - Internal prevents public creation
