@@ -29,6 +29,7 @@ using ASCOM;
 using ASCOM.Helper;
 using ASCOM.Helper2;
 using ASCOM.Interface;
+using ASCOM.Utilities;
 
 namespace ASCOM.Arduino
 {
@@ -56,6 +57,12 @@ namespace ASCOM.Arduino
 
         private bool isSlewing = false;
 
+        private ControlBox ctrl;
+
+        private ASCOM.Utilities.Serial SerialConnection;
+
+        private ASCOM.Helper.Util HC = new ASCOM.Helper.Util();
+
         //
         // Driver private data (rate collections)
         //
@@ -72,7 +79,13 @@ namespace ASCOM.Arduino
             m_AxisRates[1] = new AxisRates(TelescopeAxes.axisSecondary);
             m_AxisRates[2] = new AxisRates(TelescopeAxes.axisTertiary);
             m_TrackingRates = new TrackingRates();
-            // TODO Implement your additional construction here
+
+
+            SerialConnection = new ASCOM.Utilities.Serial();
+            SerialConnection.Port = 4;
+            SerialConnection.StopBits = SerialStopBits.One;
+            SerialConnection.Parity = SerialParity.None;
+            SerialConnection.Speed = SerialSpeed.ps9600;
         }
 
         #region ASCOM Registration
@@ -117,8 +130,7 @@ namespace ASCOM.Arduino
 
         public void AbortSlew()
         {
-            // TODO Replace this with your implementation
-            throw new MethodNotImplementedException("AbortSlew");
+            SerialConnection.Transmit(": H #");
         }
 
         public AlignmentModes AlignmentMode
@@ -284,7 +296,33 @@ namespace ASCOM.Arduino
         public bool Connected
         {
             get { return this.connected; }
-            set { this.connected = value; }
+            set
+            {
+                switch (value)
+                {
+                    case true:
+                        this.connected = this.ConnectTelescope();
+                        break;
+                    case false:
+                        this.connected = !this.DisconnectTelescope();
+                        break;
+                }
+            }
+        }
+
+        public bool ConnectTelescope()
+        {
+            ctrl = new ControlBox(this);
+            ctrl.Show();
+            SerialConnection.Connected = true;
+            return true;
+        }
+
+        public bool DisconnectTelescope()
+        {
+            SerialConnection.Connected = false;
+            ctrl.Dispose();
+            return true;
         }
 
         public double Declination
@@ -351,15 +389,13 @@ namespace ASCOM.Arduino
 
         public double GuideRateDeclination
         {
-            // TODO Replace this with your implementation
-            get { throw new PropertyNotImplementedException("GuideRateDeclination", false); }
+            get { return 1; }
             set { throw new PropertyNotImplementedException("GuideRateDeclination", true); }
         }
 
         public double GuideRateRightAscension
         {
-            // TODO Replace this with your implementation
-            get { throw new PropertyNotImplementedException("GuideRateRightAscension", false); }
+            get { return 1; }
             set { throw new PropertyNotImplementedException("GuideRateRightAscension", true); }
         }
 
@@ -378,6 +414,30 @@ namespace ASCOM.Arduino
         {
             this.isSlewing = true;
 
+            switch (Axis)
+            {
+                case TelescopeAxes.axisPrimary:
+                    if (Rate > 0)
+                    {
+                        SerialConnection.Transmit(": E #");
+                    }
+                    else if (Rate < 0)
+                    {
+                        SerialConnection.Transmit(": W #");
+                    }
+                    break;
+                case TelescopeAxes.axisSecondary:
+                    if (Rate > 0)
+                    {
+                        SerialConnection.Transmit(": N #");
+                    }
+                    else if (Rate < 0)
+                    {
+                        SerialConnection.Transmit(": S #");
+                    }
+                    break;
+            }
+
             this.isSlewing = false;
         }
 
@@ -395,6 +455,29 @@ namespace ASCOM.Arduino
         public void PulseGuide(GuideDirections Direction, int Duration)
         {
             this.isPulseGuiding = true;
+
+            if (this.isSlewing)
+                return;
+
+            switch (Direction)
+            {
+                case GuideDirections.guideNorth:
+                    this.MoveAxis(TelescopeAxes.axisSecondary, 1);
+                    break;
+                case GuideDirections.guideSouth:
+                    this.MoveAxis(TelescopeAxes.axisSecondary, -1);
+                    break;
+                case GuideDirections.guideEast:
+                    this.MoveAxis(TelescopeAxes.axisPrimary, 1);
+                    break;
+                case GuideDirections.guideWest:
+                    this.MoveAxis(TelescopeAxes.axisPrimary, -1);
+                    break;
+            }
+
+            HC.WaitForMilliseconds(Duration);
+
+            this.AbortSlew();
 
             this.isPulseGuiding = false;
         }
