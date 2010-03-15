@@ -84,18 +84,19 @@
             // 
             // ControlBox
             // 
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(ControlBox_FormClosing);
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(144, 228);
+            this.ClientSize = new System.Drawing.Size(144, 166);
             this.Controls.Add(this.buttonWest);
             this.Controls.Add(this.buttonEast);
             this.Controls.Add(this.buttonSouth);
             this.Controls.Add(this.buttonNorth);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "ControlBox";
+            this.ShowInTaskbar = false;
             this.Text = "Control Box";
             this.TopMost = true;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ControlBox_FormClosing);
             this.ResumeLayout(false);
 
         }
